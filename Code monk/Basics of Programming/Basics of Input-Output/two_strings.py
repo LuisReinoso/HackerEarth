@@ -33,26 +33,25 @@ Note : Use Hashing Concept Only . Try to do it in O(string length).
 PALABRA_UNO = 'python'
 PALABRA_DOS = 'pamram'
 
-ABECEDARIO_UNO = [0] * 25
-ABECEDARIO_DOS = [0] * 25
+ABECEDARIO = [0] * 26
 
-for letra in PALABRA_UNO:
-    indiceAscci = ord(letra)
-    indice = indiceAscci - 97
-    ABECEDARIO_UNO[indice] = ABECEDARIO_UNO[indice] + 1
+LONGITUD_LETRA = len(PALABRA_UNO)
 
-for letra in PALABRA_DOS:
-    indiceAscci = ord(letra)
-    indice = indiceAscci - 97
-    ABECEDARIO_DOS[indice] = ABECEDARIO_DOS[indice] + 1
+for indice in range(0, LONGITUD_LETRA):
+    indiceAscciUno = ord(PALABRA_UNO[indice])
+    indiceAscciDos = ord(PALABRA_DOS[indice])
+    indiceUno = indiceAscciUno - 97
+    indiceDos = indiceAscciDos - 97
+    ABECEDARIO[indiceUno] = ABECEDARIO[indiceUno] + 1
+    ABECEDARIO[indiceDos] = ABECEDARIO[indiceDos] + 1
 
-if ABECEDARIO_UNO == ABECEDARIO_DOS:
+IS_ABECEDARIO_IGUAL = True
+
+for indice in range(0, 26):
+    if ABECEDARIO[indice] != 0:
+        print 'NO'
+        IS_ABECEDARIO_IGUAL = False
+        break
+
+if IS_ABECEDARIO_IGUAL:
     print 'YES'
-else:
-    print 'NO'
-
-# Solucion con hash
-if hash(PALABRA_UNO) == hash(PALABRA_DOS):
-    print 'YES'
-else:
-    print 'NO'
