@@ -16,15 +16,16 @@ Note: The cipher only encrypts Alpha and Numeric. (A-Z, a-z, and 0-9).
 All Symbols, such as - , ; %, remain unencrypted.
 """
 
-FRASEACONVERTIR = "All-convoYs-9-be:Alert1."
-CLAVECIFRADO = 4
+FRASEACONVERTIR = "abcdZXYzxy-999.@"
+CLAVECIFRADO = 200
 FRASEDESCIFRADA = []
 
 for letra in FRASEACONVERTIR:
     indiceAscci = ord(letra)
-    indiceSuperior = indiceAscci + CLAVECIFRADO
 
-    if indiceAscci >= 48 and indiceAscci <= 57:
+    if indiceAscci >= 48 and indiceAscci <= 57: # 10 numeros
+        numeroRotacion = CLAVECIFRADO % 10
+        indiceSuperior = indiceAscci + numeroRotacion
         if indiceSuperior > 57:
             auxIndice = indiceSuperior - 57
             indiceRespuesta = 47 + auxIndice
@@ -32,7 +33,9 @@ for letra in FRASEACONVERTIR:
             indiceRespuesta = indiceSuperior
         FRASEDESCIFRADA.append(chr(indiceRespuesta))
 
-    elif indiceAscci >= 65 and indiceAscci <= 90:
+    elif indiceAscci >= 65 and indiceAscci <= 90: # 26 A-Z
+        numeroRotacion = CLAVECIFRADO % 26
+        indiceSuperior = indiceAscci + numeroRotacion
         if indiceSuperior > 90:
             auxIndice = indiceSuperior - 90
             indiceRespuesta = 64 + auxIndice
@@ -40,7 +43,9 @@ for letra in FRASEACONVERTIR:
             indiceRespuesta = indiceSuperior
         FRASEDESCIFRADA.append(chr(indiceRespuesta))
 
-    elif indiceAscci >= 97 and indiceAscci <= 122:
+    elif indiceAscci >= 97 and indiceAscci <= 122: # 26 a-z
+        numeroRotacion = CLAVECIFRADO % 26
+        indiceSuperior = indiceAscci + numeroRotacion
         if indiceSuperior > 122:
             auxIndice = indiceSuperior - 122
             indiceRespuesta = 96 + auxIndice
